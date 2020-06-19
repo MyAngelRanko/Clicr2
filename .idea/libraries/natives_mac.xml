@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="natives-mac">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/natives-mac.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/natives-linux.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/slick.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/jinput.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/slick-examples.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/jnlp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/lwjgl_util_applet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/jogg-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/tinylinepp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/natives-windows.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Slick/lib/lwjgl_util.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/../Slick" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>

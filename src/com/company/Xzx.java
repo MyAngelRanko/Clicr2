@@ -19,17 +19,17 @@ public class Xzx {
     JPanel panel = new JPanel();
     JLabel label = new JLabel("df");
     JButton button = new JButton("преобразовать");
+    button.setBounds(10,10,10,10);
 
     ButtonGroup buttonGroup = new ButtonGroup();
     JCheckBox jCheckBox = new JCheckBox("metres", false);
     JCheckBox jCheckBox1 = new JCheckBox("km", false );
     buttonGroup.add(jCheckBox);
     buttonGroup.add(jCheckBox1);
-    Integer.parseInt("1");
-    TextField textField = new TextField();
-    
 
-    int x = 1000;
+    TextField textField = new TextField(4);
+
+
 
 
 
@@ -37,12 +37,16 @@ public class Xzx {
     button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                label.setText(String.valueOf(x));
+                int x = Integer.parseInt(textField.getText());
+                if (jCheckBox.isSelected()){
+                    label.setText(String.valueOf(x*100));
+                }
+                if (jCheckBox1.isSelected()){
+                    label.setText(String.valueOf(x/100));
+                }
 
             }
         });
-
-
 
 
     panel.add(jCheckBox);
