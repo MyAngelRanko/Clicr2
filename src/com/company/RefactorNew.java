@@ -12,6 +12,7 @@ public class RefactorNew extends BasicGameState {
     Image goldIm;
     Image back;
     Image shop;
+    Image select;
     // Очки
     static int score = 0;
     // Ценность руд (Сколько дают очков)
@@ -50,67 +51,69 @@ public class RefactorNew extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        coalIm = new Image("/Угольная_руда.png");
-        ironIm = new Image("/Железная_руда.png");
-        goldIm = new Image("/Золотая_руда.png");
-        back = new Image("/фон.jpg");
-        shop = new Image("/shop.png");
+        //--------------------- Вводим картинки ---------------------------------------------
+        back = new Image("/фон2.png");
+        select = new Image("/select.png");
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+        //-------------- Рисуем картинки и проставляем координаты ------------------------
+        select.draw(0, 200);
         back.draw(0, 200);
-        graphics.drawString("Score :" + score, 50, 600);
-        graphics.drawString("Lvl :" + lvl, 250, 600);
-        graphics.drawString("Exp :" + exp, 250, 650);
-        shop.draw(1600, 250);
-        coalIm.draw(gameContainer.getWidth() - 1620, 700);
-        ironIm.draw(gameContainer.getWidth() - 1120, 700);
-        goldIm.draw(gameContainer.getWidth() - 620, 700);
-
+        graphics.drawString("Score :" + score, 1650, 1100);
+        graphics.drawString("Lvl :" + lvl, 10, 250);
+        graphics.drawString("Exp :" + exp, 10, 270);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame stateBasedGame, int i) throws SlickException {
+
         var inp = container.getInput();
         if (inp.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
-//--------------------------- Функция угля -----------------------------------------------------
-            if (inp.getMouseX() > container.getWidth() - 1620 && inp.getMouseX() < container.getWidth() - 1300) {
+           // var mine = container.getInput();
+           // if (mine.getMouseX() > container.getWidth() - 1500 && mine.getMouseX() < container.getWidth() - 1195){
+             //   if (mine.getMouseY() > 800 && mine.getMouseY() < 305 + 800){
+             //   }
+           // }
+//------------------------------------------------ Функция угля -----------------------------------------------------
+            if (inp.getMouseX() > container.getWidth() - 1615 && inp.getMouseX() < container.getWidth() - 1260) {
 
-                if (inp.getMouseY() > 700 && inp.getMouseY() < 320 + 700) {
+                if (inp.getMouseY() > 855 && inp.getMouseY() < 360 + 855) {
                     score += coalOre;
                     diffLvl -= coalOre;
-                    diffPrcCoal -= coalOre;
                 }
             }
             //------------------------------------ Функция железа -------------------------------------------------
-            if (inp.getMouseX() > container.getWidth() - 1120 && inp.getMouseX() < container.getWidth() - 800) {
+            if (inp.getMouseX() > container.getWidth() - 1109 && inp.getMouseX() < container.getWidth() - 779) {
 
-                if (inp.getMouseY() > 700 && inp.getMouseY() < 320 + 700) {
+                if (inp.getMouseY() > 856 && inp.getMouseY() < 330 + 856) {
                     score += ironOre;
                     diffLvl -= ironOre;
                 }
             }
             //----------------------------------- Функция золота ------------------------------------------------
-            if (inp.getMouseX() > container.getWidth() - 620 && inp.getMouseX() < container.getWidth() - 300) {
+            if (inp.getMouseX() > container.getWidth() - 690 && inp.getMouseX() < container.getWidth() - 355) {
 
-                if (inp.getMouseY() > 700 && inp.getMouseY() < 320 + 700) {
+                if (inp.getMouseY() > 865 && inp.getMouseY() < 335 + 865) {
                     score += goldOre;
                     diffLvl -= goldOre;
                 }
             }
+
         //__________________________________________ ОПЫТ ________________________________________________________
+
         var inp1 = container.getInput();
 //------------------------------------------------ Опыт угля -----------------------------------------------------
-            if (inp1.getMouseX() > container.getWidth() - 1620 && inp1.getMouseX() < container.getWidth() - 1300) {
+            if (inp1.getMouseX() > container.getWidth() - 1615 && inp1.getMouseX() < container.getWidth() - 1260) {
 
-                if (inp1.getMouseY() > 700 && inp1.getMouseY() < 320 + 700) {
+                if (inp1.getMouseY() > 855 && inp1.getMouseY() < 360 + 855) {
                     exp += coalOre;
                     if (exp >= priceLvl) {
                         lvl += 1;
                         int exp1 = (exp - exp);
                         exp = exp1;
-                        int exp2 = ((priceLvl + 75) * 2);
+                        int exp2 = ((priceLvl + 47) * 2);
                         priceLvl = exp2;
                         int diffLvl1 = exp2 - exp1;
                         diffLvl = diffLvl1;
@@ -118,15 +121,15 @@ public class RefactorNew extends BasicGameState {
                 }
             }
                 //------------------------------------ Опыт железа -------------------------------------------------
-                if (inp1.getMouseX() > container.getWidth() - 1120 && inp1.getMouseX() < container.getWidth() - 800) {
+                if (inp1.getMouseX() > container.getWidth() - 1109 && inp1.getMouseX() < container.getWidth() - 779) {
 
-                    if (inp.getMouseY() > 700 && inp1.getMouseY() < 320 + 700) {
+                    if (inp1.getMouseY() > 856 && inp1.getMouseY() < 330 + 856) {
                         exp += ironOre / 2;
                         if (exp >= priceLvl) {
                             lvl += 1;
                             int exp1 = (exp - exp);
                             exp = exp1;
-                            int exp2 = ((priceLvl + 75) * 2);
+                            int exp2 = ((priceLvl + 47) * 2);
                             priceLvl = exp2;
                             int diffLvl1 = exp2 - exp1;
                             diffLvl = diffLvl1;
@@ -134,19 +137,26 @@ public class RefactorNew extends BasicGameState {
                     }
                 }
                     //----------------------------------- Опыт золота ------------------------------------------------
-                    if (inp1.getMouseX() > container.getWidth() - 620 && inp1.getMouseX() < container.getWidth() - 300) {
+                    if (inp1.getMouseX() > container.getWidth() - 690 && inp1.getMouseX() < container.getWidth() - 355) {
 
-                        if (inp1.getMouseY() > 700 && inp1.getMouseY() < 320 + 700) {
+                        if (inp1.getMouseY() > 865 && inp1.getMouseY() < 335 + 865) {
                             exp += goldOre / 2;
                             if (exp >= priceLvl) {
                                 lvl += 1;
                                 int exp1 = (exp - exp);
                                 exp = exp1;
-                                int exp2 = ((priceLvl + 75) * 2);
+                                int exp2 = ((priceLvl + 47) * 2);
                                 priceLvl = exp2;
                                 int diffLvl1 = exp2 - exp1;
                                 diffLvl = diffLvl1;
                     }
+                }
+            }
+             var shop = container.getInput();
+             if (shop.getMouseX() > container.getWidth() - 200 && shop.getMouseX() < container.getWidth() - 50){
+                 if(shop.getMouseY() > 250 && shop.getMouseY() < 150 + 250){
+
+
                 }
             }
         }
