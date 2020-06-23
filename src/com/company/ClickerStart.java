@@ -24,7 +24,7 @@ public class ClickerStart extends StateBasedGame {
 
     public static void main(String[] args) throws SlickException {
         AppGameContainer container = new AppGameContainer(new ClickerStart("Clicker"));
-        container.setDisplayMode(1920, 1280, false);
+        container.setDisplayMode(1920, 1080, false);
         container.start();
     }
 }

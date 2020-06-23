@@ -7,12 +7,14 @@ import org.newdawn.slick.state.StateBasedGame;
 import javax.swing.*;
 
 public class RefactorNew extends BasicGameState {
-    Image coalIm;
-    Image ironIm;
-    Image goldIm;
+    Image coalUp;
+    Image ironUp;
+    Image goldUp;
     Image back;
-    Image shop;
     Image select;
+    Image shopMenu;
+    Image shopSell;
+    Image moneyVis;
     // Очки
     static int score = 0;
     // Ценность руд (Сколько дают очков)
@@ -52,79 +54,58 @@ public class RefactorNew extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         //--------------------- Вводим картинки ---------------------------------------------
-        back = new Image("/фон2.png");
-        select = new Image("/select.png");
+        back = new Image("/фонШахты.png");
+        select = new Image("/mainMenu.png");
+        coalUp = new Image("/coalUp.png");
+        shopMenu = new Image("/shopMenu.png");
+        shopSell = new Image("/shopSell.png");
+        ironUp = new Image("/ironUp.png");
+        goldUp = new Image("/goldUp.png");
+        moneyVis = new Image("/moneyVis.png");
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         //-------------- Рисуем картинки и проставляем координаты ------------------------
-        select.draw(0, 200);
-        back.draw(0, 200);
-        graphics.drawString("Score :" + score, 1650, 1100);
-        graphics.drawString("Lvl :" + lvl, 10, 250);
-        graphics.drawString("Exp :" + exp, 10, 270);
+        select.draw(0, 0);
+        back.draw(0, 0);
+        //shopMenu.draw(0,0);
+        //shopSell.draw(160,30);
+        coalUp.draw(gameContainer.getWidth() - 1560, 860);
+        ironUp.draw(gameContainer.getWidth() - 1170, 860);
+        goldUp.draw(gameContainer.getWidth() - 780, 860);
+        moneyVis.draw(1675,830 );
+        graphics.drawString(": " + score, 1740, 860);
+        graphics.drawString("Lvl :" + lvl, 10, 50);
+        graphics.drawString("Exp :" + exp, 10, 70);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame stateBasedGame, int i) throws SlickException {
 
         var inp = container.getInput();
+
         if (inp.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
-           // var mine = container.getInput();
-           // if (mine.getMouseX() > container.getWidth() - 1500 && mine.getMouseX() < container.getWidth() - 1195){
-             //   if (mine.getMouseY() > 800 && mine.getMouseY() < 305 + 800){
-             //   }
-           // }
+
+
 //------------------------------------------------ Функция угля -----------------------------------------------------
-            if (inp.getMouseX() > container.getWidth() - 1615 && inp.getMouseX() < container.getWidth() - 1260) {
 
-                if (inp.getMouseY() > 855 && inp.getMouseY() < 360 + 855) {
-                    score += coalOre;
-                    diffLvl -= coalOre;
-                }
-            }
-            //------------------------------------ Функция железа -------------------------------------------------
-            if (inp.getMouseX() > container.getWidth() - 1109 && inp.getMouseX() < container.getWidth() - 779) {
+                if (inp.getMouseX() > container.getWidth() - 1615 && inp.getMouseX() < container.getWidth() - 1260) {
 
-                if (inp.getMouseY() > 856 && inp.getMouseY() < 330 + 856) {
-                    score += ironOre;
-                    diffLvl -= ironOre;
-                }
-            }
-            //----------------------------------- Функция золота ------------------------------------------------
-            if (inp.getMouseX() > container.getWidth() - 690 && inp.getMouseX() < container.getWidth() - 355) {
-
-                if (inp.getMouseY() > 865 && inp.getMouseY() < 335 + 865) {
-                    score += goldOre;
-                    diffLvl -= goldOre;
-                }
-            }
-
-        //__________________________________________ ОПЫТ ________________________________________________________
-
-        var inp1 = container.getInput();
-//------------------------------------------------ Опыт угля -----------------------------------------------------
-            if (inp1.getMouseX() > container.getWidth() - 1615 && inp1.getMouseX() < container.getWidth() - 1260) {
-
-                if (inp1.getMouseY() > 855 && inp1.getMouseY() < 360 + 855) {
-                    exp += coalOre;
-                    if (exp >= priceLvl) {
-                        lvl += 1;
-                        int exp1 = (exp - exp);
-                        exp = exp1;
-                        int exp2 = ((priceLvl + 47) * 2);
-                        priceLvl = exp2;
-                        int diffLvl1 = exp2 - exp1;
-                        diffLvl = diffLvl1;
+                    if (inp.getMouseY() > 555 && inp.getMouseY() < 280 + 555) {
+                        score += coalOre;
+                        diffLvl -= coalOre;
                     }
                 }
-            }
-                //------------------------------------ Опыт железа -------------------------------------------------
-                if (inp1.getMouseX() > container.getWidth() - 1109 && inp1.getMouseX() < container.getWidth() - 779) {
 
-                    if (inp1.getMouseY() > 856 && inp1.getMouseY() < 330 + 856) {
-                        exp += ironOre / 2;
+            var inp1 = container.getInput();
+
+                //-------------------------------------- Опыт угля -----------------------------------------------------
+
+                if (inp1.getMouseX() > container.getWidth() - 1615 && inp1.getMouseX() < container.getWidth() - 1260) {
+
+                    if (inp1.getMouseY() > 555 && inp1.getMouseY() < 280 + 555) {
+                        exp += coalOre;
                         if (exp >= priceLvl) {
                             lvl += 1;
                             int exp1 = (exp - exp);
@@ -136,29 +117,113 @@ public class RefactorNew extends BasicGameState {
                         }
                     }
                 }
-                    //----------------------------------- Опыт золота ------------------------------------------------
-                    if (inp1.getMouseX() > container.getWidth() - 690 && inp1.getMouseX() < container.getWidth() - 355) {
 
-                        if (inp1.getMouseY() > 865 && inp1.getMouseY() < 335 + 865) {
-                            exp += goldOre / 2;
+                //--------------------------- Апгрейт угля ---------------------------------------------------
+                if (inp1.getMouseX() > container.getWidth() - 1560 && inp1.getMouseX() < container.getWidth() - 1170) {
+
+                    if (inp1.getMouseY() > 860 && inp1.getMouseY() < 77 + 860) {
+
+                        if (score >= priceCoal) {
+                            coalOre++;
+                            diffPrcCoal = coalOre;
+                            int score1 = score - priceCoal;
+                            score = score1;
+                            int price1 = (priceCoal * 2);
+                            priceCoal = price1;
+                        }
+                    }
+                }
+
+                //------------------------------------ Функция железа -------------------------------------------------
+                if (inp.getMouseX() > container.getWidth() - 1109 && inp.getMouseX() < container.getWidth() - 855) {
+
+                    if (inp.getMouseY() > 556 && inp.getMouseY() < 285 + 556) {
+                        if (StonePickaxe == true) {
+                            score += ironOre;
+                            diffLvl -= ironOre;
+                        }
+                    }
+                }
+
+
+                //------------------------------------ Опыт железа -------------------------------------------------
+                if (inp1.getMouseX() > container.getWidth() - 1109 && inp1.getMouseX() < container.getWidth() - 855) {
+
+                    if (inp1.getMouseY() > 556 && inp1.getMouseY() < 285 + 556) {
+                        if (StonePickaxe == true) {
+                            exp += ironOre / 2;
                             if (exp >= priceLvl) {
                                 lvl += 1;
                                 int exp1 = (exp - exp);
                                 exp = exp1;
-                                int exp2 = ((priceLvl + 47) * 2);
+                                int exp2 = ((priceLvl + 75) * 2);
                                 priceLvl = exp2;
-                                int diffLvl1 = exp2 - exp1;
-                                diffLvl = diffLvl1;
+                            }
+                        }
                     }
                 }
-            }
-             var shop = container.getInput();
-             if (shop.getMouseX() > container.getWidth() - 200 && shop.getMouseX() < container.getWidth() - 50){
-                 if(shop.getMouseY() > 250 && shop.getMouseY() < 150 + 250){
 
+                //------------------------------------------------ Апгрейт железа ----------------------------------------
 
+                if (inp1.getMouseX() > container.getWidth() - 1170 && inp1.getMouseX() < container.getWidth() - 780) {
+
+                    if (inp1.getMouseY() > 860 && inp1.getMouseY() < 77 + 860) {
+                        if(StonePickaxe==true){
+                            if(score >= priceIron) {
+                                ironOre++;
+                                int score1 = score - priceIron;
+                                score = score1;
+                                int price1 = (priceIron * 2);
+                                priceIron = price1;
+                            }
+                        }
+                    }
                 }
-            }
+
+                //----------------------------------- Функция золота ------------------------------------------------
+                if (inp.getMouseX() > container.getWidth() - 685 && inp.getMouseX() < container.getWidth() - 340) {
+
+                    if (inp.getMouseY() > 565 && inp.getMouseY() < 280 + 565) {
+                        if(IronPickaxe==true){
+                            score += goldOre;
+                            diffLvl-= goldOre;
+                        }
+                    }
+                }
+
+                    //----------------------------------- Опыт золота ------------------------------------------------
+                if (inp1.getMouseX() > container.getWidth() - 685 && inp1.getMouseX() < container.getWidth() - 340) {
+
+                    if (inp1.getMouseY() > 565 && inp1.getMouseY() < 280 + 565) {
+                        if(IronPickaxe==true){
+                            exp += goldOre/2;
+                            if (exp >= priceLvl) {
+                                lvl += 1;
+                                int exp1 = (exp - exp);
+                                exp = exp1;
+                                int exp2 = ((priceLvl + 75) * 2 );
+                                priceLvl = exp2;
+                            }
+                        }
+                    }
+                }
+                    //------------------------------------------------ Апгрейт золота ----------------------------------------
+                if (inp1.getMouseX() > container.getWidth() - 780 && inp1.getMouseX() < container.getWidth() - 390) {
+
+                    if (inp1.getMouseY() > 860 && inp1.getMouseY() < 77 + 860) {
+                        if(IronPickaxe==true){
+                            if (score >= priceGold) {
+                                goldOre++;
+                                score++;
+                                int score1 = score - priceGold;
+                                score = score1;
+                                int price1 = (priceGold * 2);
+                                priceGold = price1;
+                            }
+                        }
+                    }
+                }
         }
     }
 }
+
