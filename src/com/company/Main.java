@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.Spliterators;
 
-public class Main{
+public class Main {
     // Очки
     static int score = 0;
 
     // Ценность руд (Сколько дают очков)
-    static int coalOre = 1 ;
+    static int coalOre = 1;
     static int ironOre = 160;
     static int goldOre = 1640;
     static int diamondOre = 5600;
@@ -43,95 +43,94 @@ public class Main{
     static boolean open1 = true;//???
 
 
-
     public static void main(String[] args) {
         // Создание окна
         JFrame frame = new JFrame("Clicker");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setBounds(300, 100, 1000,720);
+        frame.setBounds(300, 100, 1000, 720);
         JPanel panel = new JPanel();
         panel.setLayout(null);
         // Создание кнопок руды
         JButton buttonCoal = new JButton("Coal");
-        buttonCoal.setBounds(150,290,140,40);
+        buttonCoal.setBounds(150, 290, 140, 40);
 
         JButton buttonIron = new JButton("Iron");
-        buttonIron.setBounds(323,290,140,40);
+        buttonIron.setBounds(323, 290, 140, 40);
 
         JButton buttonGold = new JButton("Gold");
-        buttonGold.setBounds(496,290,140,40);
+        buttonGold.setBounds(496, 290, 140, 40);
 
         JButton buttonDiamond = new JButton("Diamond");
-        buttonDiamond.setBounds(669,290,140,40);
+        buttonDiamond.setBounds(669, 290, 140, 40);
         // Создание кнопок апгрейда
         JButton buttonUpCoal = new JButton("Upgrade Coal");
-        buttonUpCoal.setBounds(150,333,140,40);
+        buttonUpCoal.setBounds(150, 333, 140, 40);
 
         JButton buttonUpIronOre = new JButton("Upgrade IronOre");
-        buttonUpIronOre.setBounds(323,333,140,40);
+        buttonUpIronOre.setBounds(323, 333, 140, 40);
 
         JButton buttonUpGoldOre = new JButton("Upgrade GoldOre");
-        buttonUpGoldOre.setBounds(496,333,140,40);
+        buttonUpGoldOre.setBounds(496, 333, 140, 40);
 
         JButton buttonUpDiamondOre = new JButton("Up. DiamondOre");
-        buttonUpDiamondOre.setBounds(669,333,140,40);
+        buttonUpDiamondOre.setBounds(669, 333, 140, 40);
         //Кирки
         JButton buttonStonePickaxe = new JButton("Buy :Stone Pickaxe");
-        buttonStonePickaxe.setBounds(171,470,140,40);
+        buttonStonePickaxe.setBounds(171, 470, 140, 40);
 
         JButton buttonIronPickaxe = new JButton("Buy :Iron Pickaxe");
-        buttonIronPickaxe.setBounds(343,470,140,40);
+        buttonIronPickaxe.setBounds(343, 470, 140, 40);
 
         JButton buttonSuperPickaxe = new JButton("Buy :Super Pickaxe");
-        buttonSuperPickaxe.setBounds(513,470,140,40);
+        buttonSuperPickaxe.setBounds(513, 470, 140, 40);
 
         JButton autoCoal = new JButton("Auto Уголь");
-        autoCoal.setBounds(171,370,140,40);
+        autoCoal.setBounds(171, 370, 140, 40);
 
         JButton autoIron = new JButton("Auto Железо");
-        autoIron.setBounds(321,370,140,40);
+        autoIron.setBounds(321, 370, 140, 40);
 
         JButton autoGold = new JButton("Auto Золото");
-        autoGold.setBounds(471,370,140,40);
+        autoGold.setBounds(471, 370, 140, 40);
 
         JButton autoDiamond = new JButton("Auto Алмазы");
-        autoDiamond.setBounds(621,370,140,40);
+        autoDiamond.setBounds(621, 370, 140, 40);
 
         JButton magas = new JButton("Магаз");
-        magas.setBounds(629,570,140,40);
+        magas.setBounds(629, 570, 140, 40);
 
         JButton back = new JButton("Назад");
-        back.setBounds(629,570,140,40);
+        back.setBounds(629, 570, 140, 40);
 
         JButton lootbox = new JButton("Лутбокс");
-        lootbox.setBounds(621,470,140,40);
+        lootbox.setBounds(621, 470, 140, 40);
         // Создание строк
-        JLabel label = new JLabel("Score:"+score);
-        label.setBounds(820,570,100,15);
-        JLabel labelLvl = new JLabel("Lvl :"+lvl);
-        labelLvl.setBounds(5,2,100,15);
-        JLabel labelExp = new JLabel("Exp :"+exp);
-        labelExp.setBounds(60,2,100,15);
+        JLabel label = new JLabel("Score:" + score);
+        label.setBounds(820, 570, 100, 15);
+        JLabel labelLvl = new JLabel("Lvl :" + lvl);
+        labelLvl.setBounds(5, 2, 100, 15);
+        JLabel labelExp = new JLabel("Exp :" + exp);
+        labelExp.setBounds(60, 2, 100, 15);
 
-        JLabel labelDiffLvl = new JLabel("Осталось опыта :"+diffLvl);
-        labelDiffLvl.setBounds(5,20,200,15);
-        JLabel labelDiffPrcCoal = new JLabel("Осталось очков :"+diffPrcCoal);
-        labelDiffPrcCoal.setBounds(150,400,200,15);
-        JLabel labelDiffPrcIron = new JLabel("Осталось очков :"+diffPrcIron);
-        labelDiffPrcIron.setBounds(323,400,200,15);
-        JLabel labelDiffPrcGold = new JLabel("Осталось очков :"+diffPrcGold);
-        labelDiffPrcGold.setBounds(496,400,200,15);
-        JLabel labelDiffPrcDiamond= new JLabel("Осталось очков :"+diffPrcDiamond);
-        labelDiffPrcDiamond.setBounds(669,400,200,15);
+        JLabel labelDiffLvl = new JLabel("Осталось опыта :" + diffLvl);
+        labelDiffLvl.setBounds(5, 20, 200, 15);
+        JLabel labelDiffPrcCoal = new JLabel("Осталось очков :" + diffPrcCoal);
+        labelDiffPrcCoal.setBounds(150, 400, 200, 15);
+        JLabel labelDiffPrcIron = new JLabel("Осталось очков :" + diffPrcIron);
+        labelDiffPrcIron.setBounds(323, 400, 200, 15);
+        JLabel labelDiffPrcGold = new JLabel("Осталось очков :" + diffPrcGold);
+        labelDiffPrcGold.setBounds(496, 400, 200, 15);
+        JLabel labelDiffPrcDiamond = new JLabel("Осталось очков :" + diffPrcDiamond);
+        labelDiffPrcDiamond.setBounds(669, 400, 200, 15);
 
-        JLabel labelScoreCoal = new JLabel("+"+coalOre);
-        labelScoreCoal.setBounds(194,250,140,40);
-        JLabel labelScoreIron = new JLabel("+"+ironOre);
-        labelScoreIron.setBounds(387,250,140,40);
-        JLabel labelScoreGold = new JLabel("+"+goldOre);
-        labelScoreGold.setBounds(540,250,140,40);
-        JLabel labelScoreDiamond = new JLabel("+"+diamondOre);
-        labelScoreDiamond.setBounds(713,250,140,40);
+        JLabel labelScoreCoal = new JLabel("+" + coalOre);
+        labelScoreCoal.setBounds(194, 250, 140, 40);
+        JLabel labelScoreIron = new JLabel("+" + ironOre);
+        labelScoreIron.setBounds(387, 250, 140, 40);
+        JLabel labelScoreGold = new JLabel("+" + goldOre);
+        labelScoreGold.setBounds(540, 250, 140, 40);
+        JLabel labelScoreDiamond = new JLabel("+" + diamondOre);
+        labelScoreDiamond.setBounds(713, 250, 140, 40);
 
 
         // ------------------------------ Функции кнопок ------------------------------
@@ -163,8 +162,8 @@ public class Main{
                     priceCoal = price1;
                     int diffPrcCoalExp1 = price1 - score1;
                     diffPrcCoal = diffPrcCoalExp1;
-                    labelDiffPrcCoal.setText(("Осталось очков :"+diffPrcCoal));
-                    labelScoreCoal.setText("+"+ coalOre);
+                    labelDiffPrcCoal.setText(("Осталось очков :" + diffPrcCoal));
+                    labelScoreCoal.setText("+" + coalOre);
                 }
             }
         });
@@ -174,16 +173,16 @@ public class Main{
             public void actionPerformed(ActionEvent e) {
                 exp += coalOre;
                 labelExp.setText("Exp :" + exp);
-                if(exp >= priceLvl){
+                if (exp >= priceLvl) {
                     lvl += 1;
                     labelLvl.setText("Lvl :" + lvl);
                     int exp1 = (exp - exp);
                     exp = exp1;
                     int exp2 = ((priceLvl + 75) * 2);
                     priceLvl = exp2;
-                    int diffLvl1= exp2-exp1;
+                    int diffLvl1 = exp2 - exp1;
                     diffLvl = diffLvl1;
-                    labelDiffLvl.setText("Требуется опыта :"+ diffLvl);
+                    labelDiffLvl.setText("Требуется опыта :" + diffLvl);
                 }
             }
         });
@@ -192,7 +191,7 @@ public class Main{
         buttonStonePickaxe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (lvl >=10 && score >= 1000 && StonePickaxe == false) {
+                if (lvl >= 10 && score >= 1000 && StonePickaxe == false) {
                     StonePickaxe = true;
                     label.setText("Score :" + (score - 1000));
                     int score1 = score - 1000;
@@ -205,11 +204,11 @@ public class Main{
         buttonIron.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(StonePickaxe==true) {
+                if (StonePickaxe == true) {
                     score += ironOre;
-                    diffLvl-= ironOre;
+                    diffLvl -= ironOre;
                     label.setText("Score :" + score);
-                    labelDiffLvl.setText("Требуется опыта :"+ diffLvl);
+                    labelDiffLvl.setText("Требуется опыта :" + diffLvl);
                 }
             }
         });
@@ -217,8 +216,8 @@ public class Main{
         buttonUpIronOre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(StonePickaxe==true){
-                    if(score >= priceIron) {
+                if (StonePickaxe == true) {
+                    if (score >= priceIron) {
                         if (score >= priceIron) {
                             ironOre++;
                             label.setText("Score :" + (score - priceIron));
@@ -235,19 +234,19 @@ public class Main{
         buttonIron.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(StonePickaxe==true){
-                    exp += ironOre/2;
+                if (StonePickaxe == true) {
+                    exp += ironOre / 2;
                     labelExp.setText("Exp :" + exp);
                     if (exp >= priceLvl) {
                         lvl += 1;
                         labelLvl.setText("Lvl :" + lvl);
                         int exp1 = (exp - exp);
                         exp = exp1;
-                        int exp2 = ((priceLvl + 75) * 2 );
+                        int exp2 = ((priceLvl + 75) * 2);
                         priceLvl = exp2;
-                        int diffLvl1= exp2-exp1;
+                        int diffLvl1 = exp2 - exp1;
                         diffLvl = diffLvl1;
-                        labelDiffLvl.setText("Требуется опыта :"+ diffLvl);
+                        labelDiffLvl.setText("Требуется опыта :" + diffLvl);
                     }
                 }
             }
@@ -257,7 +256,7 @@ public class Main{
         buttonIronPickaxe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (lvl >=25 && score >= 5000 && IronPickaxe == false) {
+                if (lvl >= 25 && score >= 5000 && IronPickaxe == false) {
                     IronPickaxe = true;
                     label.setText("Score :" + (score - 5000));
                     int score1 = score - 5000;
@@ -270,12 +269,12 @@ public class Main{
         buttonGold.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(IronPickaxe==true){
-                    if(lvl>=25) {
+                if (IronPickaxe == true) {
+                    if (lvl >= 25) {
                         score += goldOre;
-                        diffLvl-= goldOre;
+                        diffLvl -= goldOre;
                         label.setText("Score :" + score);
-                        labelDiffLvl.setText("Требуется опыта :"+ diffLvl);
+                        labelDiffLvl.setText("Требуется опыта :" + diffLvl);
                     }
                 }
             }
@@ -284,8 +283,8 @@ public class Main{
         buttonUpGoldOre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(IronPickaxe==true){
-                    if(lvl>=25) {
+                if (IronPickaxe == true) {
+                    if (lvl >= 25) {
                         if (score >= priceGold) {
                             goldOre++;
                             score++;
@@ -303,20 +302,20 @@ public class Main{
         buttonGold.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(IronPickaxe==true){
-                    if(lvl>=25) {
-                        exp += goldOre/2;
+                if (IronPickaxe == true) {
+                    if (lvl >= 25) {
+                        exp += goldOre / 2;
                         labelExp.setText("Exp :" + exp);
                         if (exp >= priceLvl) {
                             lvl += 1;
                             labelLvl.setText("Lvl :" + lvl);
                             int exp1 = (exp - exp);
                             exp = exp1;
-                            int exp2 = ((priceLvl + 75) * 2 );
+                            int exp2 = ((priceLvl + 75) * 2);
                             priceLvl = exp2;
-                            int diffLvl1= exp2-exp1;
+                            int diffLvl1 = exp2 - exp1;
                             diffLvl = diffLvl1;
-                            labelDiffLvl.setText("Требуется опыта :"+ diffLvl);
+                            labelDiffLvl.setText("Требуется опыта :" + diffLvl);
                         }
                     }
                 }
@@ -327,7 +326,7 @@ public class Main{
         buttonSuperPickaxe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (lvl >=75 && score >= 10000 && SuperPickaxe == false) {
+                if (lvl >= 75 && score >= 10000 && SuperPickaxe == false) {
                     SuperPickaxe = true;
                     label.setText("Score :" + (score - 10000));
                     int score1 = score - 10000;
@@ -340,12 +339,12 @@ public class Main{
         buttonDiamond.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(SuperPickaxe==true){
-                    if(lvl>=75) {
+                if (SuperPickaxe == true) {
+                    if (lvl >= 75) {
                         score += diamondOre;
-                        diffLvl-= diamondOre;
+                        diffLvl -= diamondOre;
                         label.setText("Score :" + score);
-                        labelDiffLvl.setText("Требуется опыта :"+ diffLvl);
+                        labelDiffLvl.setText("Требуется опыта :" + diffLvl);
                         labelDiffPrcDiamond.setText("Осталось очков :" + diffPrcDiamond);
                     }
                 }
@@ -355,8 +354,8 @@ public class Main{
         buttonUpDiamondOre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(SuperPickaxe==true){
-                    if(lvl>=75) {
+                if (SuperPickaxe == true) {
+                    if (lvl >= 75) {
                         if (score >= priceDiamond) {
                             diamondOre++;
                             label.setText("Score :" + (score - priceDiamond));
@@ -373,20 +372,20 @@ public class Main{
         buttonDiamond.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(SuperPickaxe==true){
-                    if(lvl>=75) {
-                        exp += diamondOre/2;
-                        labelExp.setText("Exp :"  +  exp);
-                        if (exp >=   priceLvl) {
+                if (SuperPickaxe == true) {
+                    if (lvl >= 75) {
+                        exp += diamondOre / 2;
+                        labelExp.setText("Exp :" + exp);
+                        if (exp >= priceLvl) {
                             lvl += 1;
-                            labelLvl.setText("Lvl :"  +  lvl);
-                            int exp1 =  (exp - exp);
+                            labelLvl.setText("Lvl :" + lvl);
+                            int exp1 = (exp - exp);
                             exp = exp1;
-                            int exp2 = ((priceLvl + 75) * 2 );
+                            int exp2 = ((priceLvl + 75) * 2);
                             priceLvl = exp2;
-                            int diffLvl1= exp2-exp1;
+                            int diffLvl1 = exp2 - exp1;
                             diffLvl = diffLvl1;
-                            labelDiffLvl.setText("Требуется опыта :"+ diffLvl);
+                            labelDiffLvl.setText("Требуется опыта :" + diffLvl);
                         }
                     }
                 }
@@ -399,7 +398,7 @@ public class Main{
         autoCoal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(score>=100) {
+                if (score >= 100) {
                     label.setText("Score :" + (score - 100));
                     int score1 = score - 100;
                     score = score1;
@@ -416,7 +415,7 @@ public class Main{
                                 labelDiffPrcCoal.setText("Доступно улучшение!");
                                 exp += coalOre;
                                 labelExp.setText("Exp :" + exp);
-                                if(exp >= priceLvl) {
+                                if (exp >= priceLvl) {
                                     lvl += 1;
                                     labelLvl.setText("Lvl :" + lvl);
                                     int exp1 = (exp - exp);
@@ -438,7 +437,7 @@ public class Main{
         autoIron.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(score>=2500&StonePickaxe==true) {
+                if (score >= 2500 & StonePickaxe == true) {
                     label.setText("Score :" + (score - 2500));
                     int score1 = score - 2500;
                     score = score1;
@@ -471,8 +470,8 @@ public class Main{
         //для золота
         autoGold.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent){
-                if (score >= 10000&IronPickaxe == true) {
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (score >= 10000 & IronPickaxe == true) {
                     label.setText("Score :" + (score - 10000));
                     int score1 = score - 10000;
                     score = score1;
@@ -543,7 +542,7 @@ public class Main{
         magas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(open==false) {
+                if (open == false) {
                     buttonCoal.setVisible(false);
                     buttonIron.setVisible(false);
                     buttonGold.setVisible(false);
@@ -553,22 +552,19 @@ public class Main{
                     buttonUpIronOre.setVisible(false);
                     buttonUpGoldOre.setVisible(false);
                     buttonUpDiamondOre.setVisible(false);
-                    if(StonePickaxe) {
+                    if (StonePickaxe) {
                         buttonStonePickaxe.setVisible(false);
-                    }
-                    else {
+                    } else {
                         buttonStonePickaxe.setVisible(true);
                     }
-                    if(IronPickaxe) {
+                    if (IronPickaxe) {
                         buttonIronPickaxe.setVisible(false);
-                    }
-                    else{
+                    } else {
                         buttonIronPickaxe.setVisible(true);
                     }
-                    if(SuperPickaxe) {
+                    if (SuperPickaxe) {
                         buttonSuperPickaxe.setVisible(false);
-                    }
-                    else{
+                    } else {
                         buttonSuperPickaxe.setVisible(true);
                     }
                     labelDiffLvl.setVisible(false);
@@ -579,7 +575,7 @@ public class Main{
 
                     labelScoreCoal.setVisible(false);
                     labelScoreIron.setVisible(false);
-                    labelScoreGold .setVisible(false);
+                    labelScoreGold.setVisible(false);
                     labelScoreDiamond.setVisible(false);
 
                     autoCoal.setVisible(true);
@@ -600,7 +596,7 @@ public class Main{
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (open=true) {
+                if (open = true) {
                     buttonCoal.setVisible(true);
                     buttonIron.setVisible(true);
                     buttonGold.setVisible(true);
@@ -623,7 +619,7 @@ public class Main{
 
                     labelScoreCoal.setVisible(true);
                     labelScoreIron.setVisible(true);
-                    labelScoreGold .setVisible(true);
+                    labelScoreGold.setVisible(true);
                     labelScoreDiamond.setVisible(true);
 
                     autoCoal.setVisible(false);
