@@ -15,6 +15,8 @@ public class SelectMenu extends BasicGameState {
     Image mainMenu;
     Image moneyVis;
 
+    Sound sound1;
+
     @Override
     public int getID() {
         return 1;
@@ -24,6 +26,12 @@ public class SelectMenu extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         mainMenu = new Image("/mainMenu.png");
         moneyVis = new Image("/moneyVis.png");
+
+        sound1 = new Sound("/minecraft_click.ogg");
+        sound1.play(1.0f, 1.0f);
+        sound1.play();
+
+
     }
 
     @Override
@@ -50,6 +58,15 @@ public class SelectMenu extends BasicGameState {
                     stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
                 }
             }
+            if (inp.getMouseX() > container.getWidth() - 1970 && inp.getMouseX() < container.getWidth() - 1770) {
+                if (inp.getMouseY() > 470 && inp.getMouseY() < 303 + 470) {
+                    stateBasedGame.enterState(5, new FadeOutTransition(), new FadeInTransition());
+                }
+            }
+        }
+        var key = container.getInput();
+        if (key.isKeyPressed(Input.KEY_ESCAPE)) {
+            stateBasedGame.enterState(0, new FadeOutTransition(), new FadeInTransition());
         }
     }
 }
