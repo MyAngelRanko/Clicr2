@@ -8,9 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class ClickerStart extends StateBasedGame {
 
-    public ClickerStart(String name) {
-        super(name);
-    }
+    public ClickerStart(String name) { super(name); }
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
@@ -20,6 +18,8 @@ public class ClickerStart extends StateBasedGame {
         this.addState(new Shop());
         this.addState(new ShopSell());
         this.addState(new RefactorNew());
+        this.addState(new Secret());
+        this.addState(new Developer_Room());
 
 
 

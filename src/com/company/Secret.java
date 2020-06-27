@@ -37,7 +37,7 @@ public class Secret extends BasicGameState {
                     stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
                 }
             }
-            if (inp.getMouseX() > container.getWidth() - 870 && inp.getMouseX() < container.getWidth() - 850) {
+            if (inp.getMouseX() > container.getWidth() - 875 && inp.getMouseX() < container.getWidth() - 850) {
                 if (inp.getMouseY() > 1000 && inp.getMouseY() < 28+1000) {
                     stateBasedGame.enterState(6, new FadeOutTransition(), new FadeInTransition());
                 }
