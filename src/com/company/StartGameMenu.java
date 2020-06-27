@@ -28,19 +28,16 @@ public class StartGameMenu extends BasicGameState {
         exitGame = new Image("exitGame.png");
 
         music1 = new Music("/minecraft_ost_-_mall.ogg");
-        music1.setVolume(1.0f);
+        music1.setVolume(0.7f);
         music1.loop();
         sound1 = new Sound("/minecraft_click.ogg");
-        sound1.play(0.5f,0.5f);
+        sound1.play(0.5f, 0.5f);
         sound1.play();
-        if(music1.playing()){
+        if (music1.playing()) {
             System.out.println("work");
-        }
-        else {
+        } else {
             System.out.println("not work");
         }
-
-
 
 
     }
@@ -50,7 +47,7 @@ public class StartGameMenu extends BasicGameState {
         gameSelect.draw(0, 0);
         startGame.draw(gameContainer.getWidth() - 1150, 500);
         exitGame.draw(gameContainer.getWidth() - 1150, 590);
-        
+
     }
 
     @Override

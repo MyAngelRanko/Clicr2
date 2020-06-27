@@ -6,9 +6,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import static com.company.RefactorNew.score;
-import static com.company.RefactorNew.lvl;
-import static com.company.RefactorNew.exp;
+import static com.company.Variables.*;
 
 public class SelectMenu extends BasicGameState {
 

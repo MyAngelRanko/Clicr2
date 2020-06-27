@@ -3,14 +3,15 @@ package com.company;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.transition.BlobbyTransition;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+
+import static com.company.Variables.*;
 
 public class Shop extends BasicGameState {
     Image shopMenu;
     Image back;
-    Image openSell;
+    Image moneyVis;
 
     @Override
     public int getID() {
@@ -21,14 +22,18 @@ public class Shop extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         shopMenu = new Image("/shopMenu.png");
         back = new Image("/back.png");
-        openSell = new Image("/openSell.png");
+        moneyVis = new Image("/moneyVis.png");
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         shopMenu.draw(0, 0);
         back.draw(gameContainer.getWidth() - 210, 20);
-        openSell.draw(gameContainer.getWidth() - 1170, 427);
+        moneyVis.draw(1675, 830);
+        graphics.drawString(": " + score, 1740, 860);
+        graphics.drawString("Lvl :" + lvl, 10, 50);
+        graphics.drawString("Exp :" + exp, 10, 70);
+
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.company;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class ClickerStart extends StateBasedGame {
@@ -17,7 +16,7 @@ public class ClickerStart extends StateBasedGame {
         this.addState(new SelectMenu());
         this.addState(new Shop());
         this.addState(new ShopSell());
-        this.addState(new RefactorNew());
+        this.addState(new Mine());
         this.addState(new Secret());
         this.addState(new Developer_Room());
 
