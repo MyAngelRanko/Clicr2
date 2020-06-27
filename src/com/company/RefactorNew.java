@@ -18,6 +18,8 @@ public class RefactorNew extends BasicGameState {
     Image shopSell;
     Image moneyVis;
     Image back;
+
+    Sound sound1;
     // Очки
     public static int score = 0;
     // Ценность руд (Сколько дают очков)
@@ -63,14 +65,16 @@ public class RefactorNew extends BasicGameState {
         goldUp = new Image("/goldUp.png");
         moneyVis = new Image("/moneyVis.png");
         back = new Image("/back.png");
+
+        sound1 = new Sound("/minecraft_click.ogg");
+
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         //-------------- Рисуем картинки и проставляем координаты ------------------------
-        select.draw(0, 0);
-        back.draw(0, 0);
-        //shopSell.draw(160,30);
+
+        background.draw(0, 0);
         coalUp.draw(gameContainer.getWidth() - 1560, 860);
         ironUp.draw(gameContainer.getWidth() - 1170, 860);
         goldUp.draw(gameContainer.getWidth() - 780, 860);
@@ -79,15 +83,18 @@ public class RefactorNew extends BasicGameState {
         graphics.drawString(": " + score, 1740, 860);
         graphics.drawString("Lvl :" + lvl, 10, 50);
         graphics.drawString("Exp :" + exp, 10, 70);
+        graphics.drawString("Exp required :"+ diffLvl, 10,90);
+
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame stateBasedGame, int i) throws SlickException {
-        var inp = container.getInput();
-        if (inp.isKeyPressed(Input.KEY_P)) {
-            stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        var keyDown = container.getInput();
+        if (keyDown.isKeyDown(Input.KEY_ESCAPE) == true){
+            container.exit();
         }
 
+        var inp = container.getInput();
 
         if (inp.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             if (inp.getMouseX() > container.getWidth() - 210 && inp.getMouseX() < container.getWidth() - 15) {
