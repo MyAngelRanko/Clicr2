@@ -22,7 +22,6 @@ public class Mine extends BasicGameState {
     Image back;
 
     Sound sound1;
-    //Sound click;
 
     @Override
     public int getID() {
@@ -43,7 +42,6 @@ public class Mine extends BasicGameState {
         back = new Image("/back.png");
 
         sound1 = new Sound("/minecraft_click.ogg");
-        //click = new Sound("/clickSound.ogg");
 
     }
 
@@ -90,8 +88,6 @@ public class Mine extends BasicGameState {
             if (inp.getMouseX() > container.getWidth() - 1615 && inp.getMouseX() < container.getWidth() - 1260) {
 
                 if (inp.getMouseY() > 555 && inp.getMouseY() < 280 + 555) {
-                    //click.play(0.0f,0.01f);
-                    //click.play();
                     score += coalOre;
                     diffLvl -= coalOre;
                 }
