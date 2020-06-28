@@ -17,7 +17,6 @@ public class Variables {
     public static int lvl = 1; // Уровень
     public static long exp = 0; // Опыт
     public static long priceLvl = 105; // Стоимость прокачки уровня
-    public static long boostLvl = 47 * 2;
     public static long diffLvl = (priceLvl - exp);
     // Проверка наличии кирки
     public static boolean StonePickaxe = false;

@@ -12,6 +12,7 @@ public class Shop extends BasicGameState {
     Image shopMenu;
     Image back;
     Image moneyVis;
+    Sound sound1;
 
     @Override
     public int getID() {
@@ -23,6 +24,7 @@ public class Shop extends BasicGameState {
         shopMenu = new Image("/shopMenu.png");
         back = new Image("/back.png");
         moneyVis = new Image("/moneyVis.png");
+        sound1 = new Sound("/minecraft_click.ogg");
     }
 
     @Override
@@ -38,15 +40,21 @@ public class Shop extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame stateBasedGame, int i) throws SlickException {
+        var keyDown = container.getInput();
+        if (keyDown.isKeyDown(Input.KEY_ESCAPE) == true) {
+            stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        }
         var inp = container.getInput();
         if (inp.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             if (inp.getMouseX() > container.getWidth() - 210 && inp.getMouseX() < container.getWidth() - 15) {
                 if (inp.getMouseY() > 20 && inp.getMouseY() < 77 + 20) {
+                    sound1.play();
                     stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
                 }
             }
             if (inp.getMouseX() > container.getWidth() - 1170 && inp.getMouseX() < container.getWidth() - 837) {
                 if (inp.getMouseY() > 427 && inp.getMouseY() < 388 + 427) {
+                    sound1.play();
                     stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
                 }
             }

@@ -17,6 +17,7 @@ public class ShopSell extends BasicGameState {
     Image buy;
     Image moneyVis;
     Image stonks;
+    Sound sound1;
 
     @Override
     public int getID() {
@@ -33,6 +34,7 @@ public class ShopSell extends BasicGameState {
         buy = new Image("/buy.png");
         moneyVis = new Image("/moneyVis.png");
         stonks = new Image("/stonks.png");
+        sound1 = new Sound("/minecraft_click.ogg");
     }
 
     @Override
@@ -57,15 +59,21 @@ public class ShopSell extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame stateBasedGame, int i) throws SlickException {
+        var keyDown = container.getInput();
+        if (keyDown.isKeyDown(Input.KEY_ESCAPE) == true) {
+            stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+        }
         var inp = container.getInput();
         if (inp.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             if (inp.getMouseX() > container.getWidth() - 210 && inp.getMouseX() < container.getWidth() - 15) {
                 if (inp.getMouseY() > 20 && inp.getMouseY() < 77 + 20) {
-                    stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+                    sound1.play();
+                    stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
                 }
             }
             if (inp.getMouseX() > container.getWidth() - 1650 && inp.getMouseX() < container.getWidth() - 1490) {
                 if (inp.getMouseY() > 810 && inp.getMouseY() < 77 + 810) {
+                    sound1.play();
                     if (lvl >= 2 && score >= 100 && StonePickaxe == false) {
                         StonePickaxe = true;
                         score -= 100;
@@ -74,6 +82,7 @@ public class ShopSell extends BasicGameState {
             }
             if (inp.getMouseX() > container.getWidth() - 1450 && inp.getMouseX() < container.getWidth() - 1290) {
                 if (inp.getMouseY() > 810 && inp.getMouseY() < 77 + 810) {
+                    sound1.play();
                     if (lvl >= 2 && score >= 100 && IronPickaxe == false) {
                         IronPickaxe = true;
                         score -= 1000;

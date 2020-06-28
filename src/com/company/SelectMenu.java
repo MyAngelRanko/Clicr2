@@ -48,16 +48,19 @@ public class SelectMenu extends BasicGameState {
         if (inp.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             if (inp.getMouseX() > container.getWidth() - 1590 && inp.getMouseX() < container.getWidth() - 1270) {
                 if (inp.getMouseY() > 470 && inp.getMouseY() < 203 + 470) {
+                    sound1.play();
                     stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
                 }
             }
             if (inp.getMouseX() > container.getWidth() - 712 && inp.getMouseX() < container.getWidth() - 100) {
                 if (inp.getMouseY() > 356 && inp.getMouseY() < 497 + 356) {
+                    sound1.play();
                     stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
                 }
             }
             if (inp.getMouseX() > container.getWidth() - 1970 && inp.getMouseX() < container.getWidth() - 1770) {
                 if (inp.getMouseY() > 470 && inp.getMouseY() < 303 + 470) {
+                    sound1.play();
                     stateBasedGame.enterState(5, new FadeOutTransition(), new FadeInTransition());
                 }
             }

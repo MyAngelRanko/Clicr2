@@ -22,6 +22,7 @@ public class Mine extends BasicGameState {
     Image back;
 
     Sound sound1;
+    //Sound click;
 
     @Override
     public int getID() {
@@ -42,6 +43,7 @@ public class Mine extends BasicGameState {
         back = new Image("/back.png");
 
         sound1 = new Sound("/minecraft_click.ogg");
+        //click = new Sound("/clickSound.ogg");
 
     }
 
@@ -77,6 +79,7 @@ public class Mine extends BasicGameState {
         if (inp.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             if (inp.getMouseX() > container.getWidth() - 210 && inp.getMouseX() < container.getWidth() - 15) {
                 if (inp.getMouseY() > 20 && inp.getMouseY() < 77 + 20) {
+                    sound1.play();
                     stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
                 }
             }
@@ -87,6 +90,8 @@ public class Mine extends BasicGameState {
             if (inp.getMouseX() > container.getWidth() - 1615 && inp.getMouseX() < container.getWidth() - 1260) {
 
                 if (inp.getMouseY() > 555 && inp.getMouseY() < 280 + 555) {
+                    //click.play(0.0f,0.01f);
+                    //click.play();
                     score += coalOre;
                     diffLvl -= coalOre;
                 }
@@ -102,7 +107,12 @@ public class Mine extends BasicGameState {
                     exp += coalOre;
                     if (exp >= priceLvl) {
                         lvl += 1;
-                        priceLvl += boostLvl;
+                        long exp1 = (exp - exp);
+                        exp = exp1;
+                        long exp2 = ((priceLvl + 47) * 2);
+                        priceLvl = exp2;
+                        long diffLvl1 = exp2 - exp1;
+                        diffLvl = diffLvl1;
                     }
                 }
             }
@@ -115,6 +125,7 @@ public class Mine extends BasicGameState {
 
                     if (score >= priceCoal) {
                         coalOre++;
+                        score -= priceCoal;
                         priceCoal *= 2;
                     }
                 }
@@ -142,7 +153,12 @@ public class Mine extends BasicGameState {
                         exp += ironOre / 2;
                         if (exp >= priceLvl) {
                             lvl += 1;
-                            priceLvl += boostLvl;
+                            long exp1 = (exp - exp);
+                            exp = exp1;
+                            long exp2 = ((priceLvl + 47) * 2);
+                            priceLvl = exp2;
+                            long diffLvl1 = exp2 - exp1;
+                            diffLvl = diffLvl1;
                         }
                     }
                 }
@@ -156,6 +172,7 @@ public class Mine extends BasicGameState {
                     if (StonePickaxe == true) {
                         if (score >= priceIron) {
                             ironOre++;
+                            score -= priceIron;
                             priceIron *= 2;
                         }
                     }
@@ -183,7 +200,12 @@ public class Mine extends BasicGameState {
                         exp += goldOre / 2;
                         if (exp >= priceLvl) {
                             lvl += 1;
-                            priceLvl += boostLvl;
+                            long exp1 = (exp - exp);
+                            exp = exp1;
+                            long exp2 = ((priceLvl + 47) * 2);
+                            priceLvl = exp2;
+                            long diffLvl1 = exp2 - exp1;
+                            diffLvl = diffLvl1;
                         }
                     }
                 }
@@ -198,6 +220,7 @@ public class Mine extends BasicGameState {
                         if (score >= priceGold) {
                             goldOre++;
                             score++;
+                            score -= priceGold;
                             priceGold *= 2;
                         }
                     }
