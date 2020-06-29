@@ -5,12 +5,15 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import java.util.Random;
 
 
 import static com.company.Variables.*;
 
 
 public class Mine extends BasicGameState {
+    static Random random = new Random();
+    public static int randomaiser;
     Image coalUp;
     Image ironUp;
     Image goldUp;
@@ -58,11 +61,11 @@ public class Mine extends BasicGameState {
         graphics.drawString(": " + score, 1740, 860);
         graphics.drawString("Lvl :" + lvl, 10, 50);
         graphics.drawString("Exp :" + exp, 10, 70);
-        graphics.drawString("Exp required :" + diffLvl, 10, 90);
+        graphics.drawString("Next lvl up :" + priceLvl, 10, 90);
+        graphics.drawString("Exp required :" + diffLvl, 10, 110);
         graphics.drawString("Score required :" + priceCoal, 460, 960);
         graphics.drawString("Score required :" + priceIron, 870, 960);
         graphics.drawString("Score required :" + priceGold, 1280, 960);
-
     }
 
     @Override
@@ -96,19 +99,19 @@ public class Mine extends BasicGameState {
             var inp1 = container.getInput();
 
             //-------------------------------------- Опыт угля -----------------------------------------------------
-
             if (inp1.getMouseX() > container.getWidth() - 1615 && inp1.getMouseX() < container.getWidth() - 1260) {
 
                 if (inp1.getMouseY() > 555 && inp1.getMouseY() < 280 + 555) {
-                    exp += coalOre;
+                    int randomaiser = random.nextInt(13) + 1;
+                    exp += randomaiser;
+                    diffLvl = Math.round(priceLvl - exp);
                     if (exp >= priceLvl) {
                         lvl += 1;
-                        long exp1 = (exp - exp);
-                        exp = exp1;
-                        long exp2 = ((priceLvl + 47) * 2);
-                        priceLvl = exp2;
-                        long diffLvl1 = exp2 - exp1;
-                        diffLvl = diffLvl1;
+                        priceLvl = Math.round(priceLvl * coefficient);
+                        exp = 0;
+                    }
+                    if (diffLvl < 0){
+                        diffLvl = priceLvl;
                     }
                 }
             }
@@ -149,11 +152,11 @@ public class Mine extends BasicGameState {
                         exp += ironOre / 2;
                         if (exp >= priceLvl) {
                             lvl += 1;
-                            long exp1 = (exp - exp);
+                            double exp1 = (exp - exp);
                             exp = exp1;
-                            long exp2 = ((priceLvl + 47) * 2);
+                            double exp2 = priceLvl * randomaiser;
                             priceLvl = exp2;
-                            long diffLvl1 = exp2 - exp1;
+                            double diffLvl1 = exp2 - exp1;
                             diffLvl = diffLvl1;
                         }
                     }
@@ -196,11 +199,11 @@ public class Mine extends BasicGameState {
                         exp += goldOre / 2;
                         if (exp >= priceLvl) {
                             lvl += 1;
-                            long exp1 = (exp - exp);
+                            double exp1 = (exp - exp);
                             exp = exp1;
-                            long exp2 = ((priceLvl + 47) * 2);
+                            double exp2 = ((priceLvl + 47) * 2);
                             priceLvl = exp2;
-                            long diffLvl1 = exp2 - exp1;
+                            double diffLvl1 = exp2 - exp1;
                             diffLvl = diffLvl1;
                         }
                     }
