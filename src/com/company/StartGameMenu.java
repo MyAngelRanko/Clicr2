@@ -46,7 +46,7 @@ public class StartGameMenu extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame stateBasedGame, int i) throws SlickException {
-        music1.play();
+        music1.loop();
         var keyDown = container.getInput();
         if (keyDown.isKeyDown(Input.KEY_ESCAPE) == true) {
             System.exit(0);
@@ -65,6 +65,7 @@ public class StartGameMenu extends BasicGameState {
                     System.exit(0);
                 }
             }
+
         }
     }
 }
