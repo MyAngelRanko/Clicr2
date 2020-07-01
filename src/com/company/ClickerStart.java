@@ -7,7 +7,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class ClickerStart extends StateBasedGame {
 
-    public ClickerStart(String name) { super(name); }
+    public ClickerStart(String name) {
+        super(name);
+    }
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
@@ -21,13 +23,13 @@ public class ClickerStart extends StateBasedGame {
         this.addState(new Developer_Room());
 
 
-
         container.setTargetFrameRate(144);
         container.setAlwaysRender(true);
     }
 
 
     public static void main(String[] args) throws SlickException {
+        LvlCalculated.lvlCalculated(); // Запуск калькулятора уровней
         AppGameContainer container = new AppGameContainer(new ClickerStart("Clicker"));
         container.setDisplayMode(1920, 1080, false);
         container.start();

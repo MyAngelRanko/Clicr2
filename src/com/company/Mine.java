@@ -5,13 +5,14 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import java.util.Random;
 
+import static com.company.LvlCalculated.*;
+import java.util.Random;
 
 import static com.company.Variables.*;
 
-
 public class Mine extends BasicGameState {
+
     static Random random = new Random();
     public static int randomaiser;
     Image coalUp;
@@ -102,15 +103,16 @@ public class Mine extends BasicGameState {
             if (inp1.getMouseX() > container.getWidth() - 1615 && inp1.getMouseX() < container.getWidth() - 1260) {
 
                 if (inp1.getMouseY() > 555 && inp1.getMouseY() < 280 + 555) {
-                    int randomaiser = random.nextInt(13) + 1;
+                    int randomaiser = random.nextInt(50) + 10;
                     exp += randomaiser;
                     diffLvl = Math.round(priceLvl - exp);
                     if (exp >= priceLvl) {
                         lvl += 1;
-                        priceLvl = Math.round(priceLvl * coefficient);
+                        priceLvl = list.get(g);
+                        g--;
                         exp = 0;
                     }
-                    if (diffLvl < 0){
+                    if (diffLvl < 0) {
                         diffLvl = priceLvl;
                     }
                 }
